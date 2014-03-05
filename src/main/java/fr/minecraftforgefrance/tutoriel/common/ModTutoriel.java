@@ -23,13 +23,16 @@ public class ModTutoriel
 	@SidedProxy(clientSide = "fr.minecraftforgefrance.tutoriel.proxy.ClientProxy", serverSide = "fr.minecraftforgefrance.tutoriel.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static Item itemTutoriel;
+	public static Item itemTutoriel, itemTutoriel2;
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
-		itemTutoriel = new ItemTutoriel().setUnlocalizedName("itemTutoriel").setTextureName(ModTutoriel.MODID + ":itemtutoriel").setCreativeTab(CreativeTabs.tabMaterials);
-		GameRegistry.registerItem(itemTutoriel, "itemtutoriel", ModTutoriel.MODID);
+		itemTutoriel = new ItemTutoriel().setUnlocalizedName("tutoriel").setTextureName(MODID + ":item_tutoriel").setCreativeTab(CreativeTabs.tabMaterials);
+		itemTutoriel2 = new ItemTutoriel().setUnlocalizedName("tutoriel2").setTextureName(MODID + ":item_tutoriel2").setCreativeTab(CreativeTabs.tabMaterials);
+
+		GameRegistry.registerItem(itemTutoriel, "item_tutoriel");
+		GameRegistry.registerItem(itemTutoriel2, "item_tutoriel2");
 	}
 
 	@EventHandler
