@@ -1,11 +1,11 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
+import java.awt.Color;
+
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
-import net.minecraft.item.ItemBlock;
-import net.minecraftforge.common.MinecraftForge;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -13,8 +13,8 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
 import fr.minecraftforgefrance.tutoriel.proxy.CommonProxy;
 
 @Mod(modid = ModTutoriel.MODID, name = "Mod Tutoriel", version = "1.0.0")
@@ -50,6 +50,8 @@ public class ModTutoriel
 	@EventHandler
 	public void init(FMLInitializationEvent event)
 	{
+		EntityRegistry.registerGlobalEntityID(EntityMobTutoriel.class, "mobTutoriel", EntityRegistry.findGlobalUniqueEntityId(), new Color(0, 0, 255).getRGB(), new Color(255, 0, 0).getRGB());
+		EntityRegistry.registerModEntity(EntityMobTutoriel.class, "mobTutoriel", 420, this.instance, 40, 2, true);
 		proxy.registerRender();
 	}
 
