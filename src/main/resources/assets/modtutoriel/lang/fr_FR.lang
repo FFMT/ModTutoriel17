@@ -1,5 +1,11 @@
 item.tutoriel.name=Item Tutoriel
 item.tutoriel2.name=Item Tutoriel 2
+item.helmetTuto.name=Casque Tutoriel
+item.chestPlateTuto.name=Plastron Tutoriel
+item.leggingsTuto.name=Jambières Tutoriel
+item.bootsTuto.name=Bottes Tutoriel
+
 tile.tutoriel.name=Bloc Tutoriel
 tile.tutoriel2.name=Bloc Tutoriel 2
+
 entity.mobTutoriel.name=Mob Tutoriel

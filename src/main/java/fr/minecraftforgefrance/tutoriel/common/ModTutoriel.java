@@ -6,6 +6,9 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -28,17 +31,27 @@ public class ModTutoriel
 	@SidedProxy(clientSide = "fr.minecraftforgefrance.tutoriel.proxy.ClientProxy", serverSide = "fr.minecraftforgefrance.tutoriel.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static Item itemTutoriel, itemTutoriel2;
+	public static Item itemTutoriel, itemTutoriel2, helmetTuto, chestPlateTuto, leggingsTuto, bootsTuto;
 	public static Block blockTutoriel, blockTutoriel2;
+
+	public static ArmorMaterial armorTuto = EnumHelper.addArmorMaterial("armorTuto", 25, new int[] {4, 6, 5, 4}, 20);
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
 	{
 		itemTutoriel = new ItemTutoriel().setUnlocalizedName("tutoriel").setTextureName(MODID + ":item_tutoriel").setCreativeTab(CreativeTabs.tabMaterials);
 		itemTutoriel2 = new ItemTutoriel().setUnlocalizedName("tutoriel2").setTextureName(MODID + ":item_tutoriel2").setCreativeTab(CreativeTabs.tabMaterials);
+		helmetTuto = new ItemTutoArmor(armorTuto, 0).setUnlocalizedName("helmetTuto").setTextureName(MODID + ":helmet_tutoriel");
+		chestPlateTuto = new ItemTutoArmor(armorTuto, 1).setUnlocalizedName("chestPlateTuto").setTextureName(MODID + ":chestplate_tutoriel");
+		leggingsTuto = new ItemTutoArmor(armorTuto, 2).setUnlocalizedName("leggingsTuto").setTextureName(MODID + ":leggings_tutoriel");
+		bootsTuto = new ItemTutoArmor(armorTuto, 3).setUnlocalizedName("bootsTuto").setTextureName(MODID + ":boots_tutoriel");
 
 		GameRegistry.registerItem(itemTutoriel, "item_tutoriel");
 		GameRegistry.registerItem(itemTutoriel2, "item_tutoriel2");
+		GameRegistry.registerItem(helmetTuto, "item_tuto_helmet");
+		GameRegistry.registerItem(chestPlateTuto, "item_tuto_chestplate");
+		GameRegistry.registerItem(leggingsTuto, "item_tuto_leggings");
+		GameRegistry.registerItem(bootsTuto, "item_tuto_boots");
 
 		blockTutoriel = new BlockTutoriel(Material.rock).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock);
 		blockTutoriel2 = new BlockTutoriel(Material.wood).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
@@ -52,6 +65,8 @@ public class ModTutoriel
 	{
 		EntityRegistry.registerGlobalEntityID(EntityMobTutoriel.class, "mobTutoriel", EntityRegistry.findGlobalUniqueEntityId(), new Color(0, 0, 255).getRGB(), new Color(255, 0, 0).getRGB());
 		EntityRegistry.registerModEntity(EntityMobTutoriel.class, "mobTutoriel", 420, this.instance, 40, 2, true);
+
+		MinecraftForge.EVENT_BUS.register(new LivingEventHandler());
 		proxy.registerRender();
 	}
 
