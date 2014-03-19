@@ -4,8 +4,17 @@ item.helmetTuto.name=Casque Tutoriel
 item.chestPlateTuto.name=Plastron Tutoriel
 item.leggingsTuto.name=Jambières Tutoriel
 item.bootsTuto.name=Bottes Tutoriel
+item.swordTuto.name=Épée Tutoriel
+item.pickaxeTuto.name=Pioche Tutoriel
+item.axeTuto.name=Hache Tutoriel
+item.shovelTuto.name=Pelle Tutoriel
+item.hoeTuto.name=Houe Tutoriel
 
 tile.tutoriel.name=Bloc Tutoriel
 tile.tutoriel2.name=Bloc Tutoriel 2
 
 entity.mobTutoriel.name=Mob Tutoriel
+
+sword.mode.message.0=Enflammer les joueurs
+sword.mode.message.1=Enflammer les monstres
+sword.mode.message.2=Enflammer les animaux

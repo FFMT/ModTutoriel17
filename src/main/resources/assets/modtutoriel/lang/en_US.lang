@@ -4,8 +4,17 @@ item.helmetTuto.name=Tutorial Helmet
 item.chestPlateTuto.name=Tutorial ChestPlate
 item.leggingsTuto.name=Tutorial Leggings
 item.bootsTuto.name=Tutorial Boots
+item.swordTuto.name=Tutorial Sword
+item.pickaxeTuto.name=Tutorial Pickaxe
+item.axeTuto.name=Tutorial Axe
+item.shovelTuto.name=Tutorial Shovel
+item.hoeTuto.name=Tutorial Hoe
 
 tile.tutoriel.name=Block Tutorial
 tile.tutoriel2.name=Block Tutorial 2
 
 entity.mobTutoriel.name=Tutorial Mob
+
+sword.mode.message.0=Burn player
+sword.mode.message.1=Burn mob
+sword.mode.message.2=Burn animals

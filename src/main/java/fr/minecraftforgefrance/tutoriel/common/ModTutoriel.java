@@ -6,6 +6,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
@@ -31,10 +32,11 @@ public class ModTutoriel
 	@SidedProxy(clientSide = "fr.minecraftforgefrance.tutoriel.proxy.ClientProxy", serverSide = "fr.minecraftforgefrance.tutoriel.proxy.CommonProxy")
 	public static CommonProxy proxy;
 
-	public static Item itemTutoriel, itemTutoriel2, helmetTuto, chestPlateTuto, leggingsTuto, bootsTuto;
+	public static Item itemTutoriel, itemTutoriel2, helmetTuto, chestPlateTuto, leggingsTuto, bootsTuto, swordTuto, pickaxeTuto, axeTuto, shovelTuto, hoeTuto;
 	public static Block blockTutoriel, blockTutoriel2;
 
 	public static ArmorMaterial armorTuto = EnumHelper.addArmorMaterial("armorTuto", 25, new int[] {4, 6, 5, 4}, 20);
+	public static ToolMaterial toolTuto = EnumHelper.addToolMaterial("toolTuto", 2, 854, 12.0F, 4.0F, 18);
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event)
@@ -45,6 +47,11 @@ public class ModTutoriel
 		chestPlateTuto = new ItemTutoArmor(armorTuto, 1).setUnlocalizedName("chestPlateTuto").setTextureName(MODID + ":chestplate_tutoriel");
 		leggingsTuto = new ItemTutoArmor(armorTuto, 2).setUnlocalizedName("leggingsTuto").setTextureName(MODID + ":leggings_tutoriel");
 		bootsTuto = new ItemTutoArmor(armorTuto, 3).setUnlocalizedName("bootsTuto").setTextureName(MODID + ":boots_tutoriel");
+		swordTuto = new ItemTutoSword(toolTuto).setUnlocalizedName("swordTuto").setTextureName(MODID + ":sword_tutoriel");
+		pickaxeTuto = new ItemTutoPickaxe(toolTuto).setUnlocalizedName("pickaxeTuto").setTextureName(MODID + ":pickaxe_tutoriel");
+		axeTuto = new ItemTutoAxe(toolTuto).setUnlocalizedName("axeTuto").setTextureName(MODID + ":axe_tutoriel");
+		shovelTuto = new ItemTutoShovel(toolTuto).setUnlocalizedName("shovelTuto").setTextureName(MODID + ":shovel_tutoriel");
+		hoeTuto = new ItemTutoHoe(toolTuto).setUnlocalizedName("hoeTuto").setTextureName(MODID + ":hoe_tutoriel");
 
 		GameRegistry.registerItem(itemTutoriel, "item_tutoriel");
 		GameRegistry.registerItem(itemTutoriel2, "item_tutoriel2");
@@ -52,6 +59,11 @@ public class ModTutoriel
 		GameRegistry.registerItem(chestPlateTuto, "item_tuto_chestplate");
 		GameRegistry.registerItem(leggingsTuto, "item_tuto_leggings");
 		GameRegistry.registerItem(bootsTuto, "item_tuto_boots");
+		GameRegistry.registerItem(swordTuto, "item_tuto_sword");
+		GameRegistry.registerItem(pickaxeTuto, "item_tuto_pickaxe");
+		GameRegistry.registerItem(axeTuto, "item_tuto_axe");
+		GameRegistry.registerItem(shovelTuto, "item_tuto_shovel");
+		GameRegistry.registerItem(hoeTuto, "item_tuto_hoe");
 
 		blockTutoriel = new BlockTutoriel(Material.rock).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock);
 		blockTutoriel2 = new BlockTutoriel(Material.wood).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
