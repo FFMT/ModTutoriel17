@@ -10,6 +10,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
+import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -19,6 +20,7 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import fr.minecraftforgefrance.tutoriel.proxy.CommonProxy;
 
 @Mod(modid = ModTutoriel.MODID, name = "Mod Tutoriel", version = "1.0.0")
@@ -79,6 +81,9 @@ public class ModTutoriel
 		EntityRegistry.registerModEntity(EntityMobTutoriel.class, "mobTutoriel", 420, this.instance, 40, 2, true);
 
 		MinecraftForge.EVENT_BUS.register(new LivingEventHandler());
+		MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
+		FMLCommonHandler.instance().bus().register(new PlayerEventHandler());
+		MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
 		proxy.registerRender();
 	}
 
