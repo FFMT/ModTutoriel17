@@ -12,6 +12,10 @@ item.hoeTuto.name=Tutorial Hoe
 
 tile.tutoriel.name=Block Tutorial
 tile.tutoriel2.name=Block Tutorial 2
+tile.metadataTuto.block1.name=Metadata Block 1
+tile.metadataTuto.block2.name=Metadata Block 2
+tile.metadataTuto.block3.name=Metadata Block 3
+tile.metadataTuto.block4.name=Metadata Block 4
 
 entity.mobTutoriel.name=Tutorial Mob
 

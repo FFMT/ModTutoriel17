@@ -8,6 +8,7 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraft.item.ItemMultiTexture;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -35,7 +36,7 @@ public class ModTutoriel
 	public static CommonProxy proxy;
 
 	public static Item itemTutoriel, itemTutoriel2, helmetTuto, chestPlateTuto, leggingsTuto, bootsTuto, swordTuto, pickaxeTuto, axeTuto, shovelTuto, hoeTuto;
-	public static Block blockTutoriel, blockTutoriel2;
+	public static Block blockTutoriel, blockTutoriel2, blockMetadataTuto;
 
 	public static ArmorMaterial armorTuto = EnumHelper.addArmorMaterial("armorTuto", 25, new int[] {4, 6, 5, 4}, 20);
 	public static ToolMaterial toolTuto = EnumHelper.addToolMaterial("toolTuto", 2, 854, 12.0F, 4.0F, 18);
@@ -67,11 +68,13 @@ public class ModTutoriel
 		GameRegistry.registerItem(shovelTuto, "item_tuto_shovel");
 		GameRegistry.registerItem(hoeTuto, "item_tuto_hoe");
 
-		blockTutoriel = new BlockTutoriel(Material.rock).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock);
-		blockTutoriel2 = new BlockTutoriel(Material.wood).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
+		blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock);
+		blockTutoriel2 = new BlockTutoriel(Material.wood).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
+		blockMetadataTuto = new BlockTutorielMetadata().setBlockName("metadataTuto").setHardness(1.5F).setResistance(10.0F).setCreativeTab(CreativeTabs.tabBlock);
 
 		GameRegistry.registerBlock(blockTutoriel, "block_tutoriel");
 		GameRegistry.registerBlock(blockTutoriel2, "block_tutoriel2");
+		GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", MODID, new Object[]{BlockTutorielMetadata.subBlock});
 	}
 
 	@EventHandler
