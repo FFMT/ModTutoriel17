@@ -66,8 +66,8 @@ public class ModTutoriel
 		GameRegistry.registerItem(shovelTuto, "item_tuto_shovel");
 		GameRegistry.registerItem(hoeTuto, "item_tuto_hoe");
 
-		blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock).setStepSound(Block.soundTypeAnvil).setLightLevel(1F);
-		blockTutoriel2 = new BlockTutoriel(Material.wood).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
+		blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setCreativeTab(CreativeTabs.tabBlock);
+		blockTutoriel2 = new BlockTutoriel2(Material.wood).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
 		blockMetadataTuto = new BlockTutorielMetadata().setBlockName("metadataTuto").setHardness(1.5F).setResistance(10.0F).setCreativeTab(CreativeTabs.tabBlock);
 
 		GameRegistry.registerBlock(blockTutoriel, "block_tutoriel");
