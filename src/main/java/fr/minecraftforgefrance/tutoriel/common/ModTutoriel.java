@@ -8,7 +8,6 @@ import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraft.item.ItemMultiTexture;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
@@ -21,7 +20,6 @@ import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
-import cpw.mods.fml.relauncher.Side;
 import fr.minecraftforgefrance.tutoriel.proxy.CommonProxy;
 
 @Mod(modid = ModTutoriel.MODID, name = "Mod Tutoriel", version = "1.0.0")
@@ -68,13 +66,13 @@ public class ModTutoriel
 		GameRegistry.registerItem(shovelTuto, "item_tuto_shovel");
 		GameRegistry.registerItem(hoeTuto, "item_tuto_hoe");
 
-		blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock);
+		blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setBlockTextureName(MODID + ":block_tutoriel").setCreativeTab(CreativeTabs.tabBlock).setStepSound(Block.soundTypeAnvil).setLightLevel(1F);
 		blockTutoriel2 = new BlockTutoriel(Material.wood).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
 		blockMetadataTuto = new BlockTutorielMetadata().setBlockName("metadataTuto").setHardness(1.5F).setResistance(10.0F).setCreativeTab(CreativeTabs.tabBlock);
 
 		GameRegistry.registerBlock(blockTutoriel, "block_tutoriel");
 		GameRegistry.registerBlock(blockTutoriel2, "block_tutoriel2");
-		GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", MODID, new Object[]{BlockTutorielMetadata.subBlock});
+		GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", new Object[]{BlockTutorielMetadata.subBlock});
 	}
 
 	@EventHandler
