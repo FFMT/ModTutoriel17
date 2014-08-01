@@ -72,7 +72,7 @@ public class ModTutoriel
 
 		GameRegistry.registerBlock(blockTutoriel, "block_tutoriel");
 		GameRegistry.registerBlock(blockTutoriel2, "block_tutoriel2");
-		GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", new Object[]{BlockTutorielMetadata.subBlock});
+		GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", new Object[] {BlockTutorielMetadata.subBlock});
 	}
 
 	@EventHandler
@@ -80,6 +80,8 @@ public class ModTutoriel
 	{
 		EntityRegistry.registerGlobalEntityID(EntityMobTutoriel.class, "mobTutoriel", EntityRegistry.findGlobalUniqueEntityId(), new Color(0, 0, 255).getRGB(), new Color(255, 0, 0).getRGB());
 		EntityRegistry.registerModEntity(EntityMobTutoriel.class, "mobTutoriel", 420, this.instance, 40, 2, true);
+
+		GameRegistry.registerTileEntity(TileEntityTutoriel.class, "modtutoriel:tutoriel");
 
 		MinecraftForge.EVENT_BUS.register(new LivingEventHandler());
 		MinecraftForge.EVENT_BUS.register(new EntityEventHandler());

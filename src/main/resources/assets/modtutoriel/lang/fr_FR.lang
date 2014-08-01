@@ -22,3 +22,5 @@ entity.mobTutoriel.name=Mob Tutoriel
 sword.mode.message.0=Enflammer les joueurs
 sword.mode.message.1=Enflammer les monstres
 sword.mode.message.2=Enflammer les animaux
+
+tile.tutoriel2.number=Valeur : %d

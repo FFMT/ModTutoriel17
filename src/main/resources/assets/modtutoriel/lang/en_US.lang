@@ -22,3 +22,5 @@ entity.mobTutoriel.name=Tutorial Mob
 sword.mode.message.0=Burn player
 sword.mode.message.1=Burn mob
 sword.mode.message.2=Burn animals
+
+tile.tutoriel2.number=Value : %d

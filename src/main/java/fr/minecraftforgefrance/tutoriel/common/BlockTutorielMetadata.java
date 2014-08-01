@@ -6,18 +6,15 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.ChatComponentText;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.World;
 
 public class BlockTutorielMetadata extends Block
 {
 	public static String[] subBlock = new String[] {"block1", "block2", "block3", "block4"};
 	private IIcon[][] icons = new IIcon[subBlock.length][3];
-	
+
 	protected BlockTutorielMetadata()
 	{
 		super(Material.rock);
