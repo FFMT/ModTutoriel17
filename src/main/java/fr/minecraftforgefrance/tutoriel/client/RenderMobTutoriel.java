@@ -9,20 +9,20 @@ import fr.minecraftforgefrance.tutoriel.common.ModTutoriel;
 
 public class RenderMobTutoriel extends RenderBiped
 {
-	public final ResourceLocation texture = new ResourceLocation(ModTutoriel.MODID, "textures/entity/mob_tutoriel.png");
+    public final ResourceLocation texture = new ResourceLocation(ModTutoriel.MODID, "textures/entity/mob_tutoriel.png");
 
-	public RenderMobTutoriel(ModelBiped model, float shadow)
-	{
-		super(model, shadow);
-	}
+    public RenderMobTutoriel(ModelBiped model, float shadow)
+    {
+        super(model, shadow);
+    }
 
-	protected ResourceLocation getEntityTexture(EntityLiving living)
-	{
-		return this.getMobTutorielTexture((EntityMobTutoriel)living);
-	}
+    protected ResourceLocation getEntityTexture(EntityLiving living)
+    {
+        return this.getMobTutorielTexture((EntityMobTutoriel)living);
+    }
 
-	private ResourceLocation getMobTutorielTexture(EntityMobTutoriel mobTutoriel)
-	{
-		return texture;
-	}
+    private ResourceLocation getMobTutorielTexture(EntityMobTutoriel mobTutoriel)
+    {
+        return texture;
+    }
 }

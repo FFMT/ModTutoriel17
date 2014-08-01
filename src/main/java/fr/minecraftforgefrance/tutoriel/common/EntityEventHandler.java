@@ -6,12 +6,12 @@ import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityEventHandler
 {
-	@SubscribeEvent
-	public void onEntityJoin(EntityJoinWorldEvent event)
-	{
-		if(event.entity instanceof EntityZombie)
-		{
-			event.setCanceled(true);
-		}
-	}
+    @SubscribeEvent
+    public void onEntityJoin(EntityJoinWorldEvent event)
+    {
+        if(event.entity instanceof EntityZombie)
+        {
+            event.setCanceled(true);
+        }
+    }
 }

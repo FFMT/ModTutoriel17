@@ -12,44 +12,44 @@ import net.minecraft.util.IIcon;
 
 public class BlockTutorielMetadata extends Block
 {
-	public static String[] subBlock = new String[] {"block1", "block2", "block3", "block4"};
-	private IIcon[][] icons = new IIcon[subBlock.length][3];
+    public static String[] subBlock = new String[] {"block1", "block2", "block3", "block4"};
+    private IIcon[][] icons = new IIcon[subBlock.length][3];
 
-	protected BlockTutorielMetadata()
-	{
-		super(Material.rock);
-	}
+    protected BlockTutorielMetadata()
+    {
+        super(Material.rock);
+    }
 
-	public int damageDropped(int metadata)
-	{
-		return metadata;
-	}
+    public int damageDropped(int metadata)
+    {
+        return metadata;
+    }
 
-	public void getSubBlocks(Item item, CreativeTabs tabs, List list)
-	{
-		for(int i = 0; i < subBlock.length; i++)
-		{
-			list.add(new ItemStack(item, 1, i));
-		}
-	}
+    public void getSubBlocks(Item item, CreativeTabs tabs, List list)
+    {
+        for(int i = 0; i < subBlock.length; i++)
+        {
+            list.add(new ItemStack(item, 1, i));
+        }
+    }
 
-	public void registerBlockIcons(IIconRegister iconRegister)
-	{
-		for(int i = 0; i < subBlock.length; i++)
-		{
-			for(int j = 0; j < 3; j++)
-			{
-				this.icons[i][j] = iconRegister.registerIcon(ModTutoriel.MODID + ":" + subBlock[i] + "_" + j);
-			}
-		}
-	}
+    public void registerBlockIcons(IIconRegister iconRegister)
+    {
+        for(int i = 0; i < subBlock.length; i++)
+        {
+            for(int j = 0; j < 3; j++)
+            {
+                this.icons[i][j] = iconRegister.registerIcon(ModTutoriel.MODID + ":" + subBlock[i] + "_" + j);
+            }
+        }
+    }
 
-	public IIcon getIcon(int side, int metadata)
-	{
-		if(side > 2)
-		{
-			side = 2;
-		}
-		return metadata >= 0 && metadata < subBlock.length ? this.icons[metadata][side] : this.icons[0][0];
-	}
+    public IIcon getIcon(int side, int metadata)
+    {
+        if(side > 2)
+        {
+            side = 2;
+        }
+        return metadata >= 0 && metadata < subBlock.length ? this.icons[metadata][side] : this.icons[0][0];
+    }
 }

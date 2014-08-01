@@ -14,34 +14,34 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class PlayerEventHandler
 {
-	@SubscribeEvent
-	public void onNameFormat(PlayerEvent.NameFormat event)
-	{
-		if(event.username.equals("robin4002"))
-		{
-			event.displayname = "[MFF]robin4002";
-		}
-	}
+    @SubscribeEvent
+    public void onNameFormat(PlayerEvent.NameFormat event)
+    {
+        if(event.username.equals("robin4002"))
+        {
+            event.displayname = "[MFF]robin4002";
+        }
+    }
 
-	@SubscribeEvent
-	@SideOnly(Side.CLIENT)
-	public void onTooltip(ItemTooltipEvent event)
-	{
-		if(event.itemStack.getItem() == Items.dye && event.itemStack.getItemDamage() == 15)
-		{
-			event.toolTip.add("clic droit sur les plantes pour les faire pousser");
-		}
-		else if(event.itemStack.getItem() == Item.getItemFromBlock(Blocks.obsidian))
-		{
-			if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
-			{
-				event.toolTip.add("Bloc très résistant aux exposions");
-				event.toolTip.add("Résistance : 2000");
-			}
-			else
-			{
-				event.toolTip.add("Maintenir shift gauche pour plus d'information");
-			}
-		}
-	}
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onTooltip(ItemTooltipEvent event)
+    {
+        if(event.itemStack.getItem() == Items.dye && event.itemStack.getItemDamage() == 15)
+        {
+            event.toolTip.add("clic droit sur les plantes pour les faire pousser");
+        }
+        else if(event.itemStack.getItem() == Item.getItemFromBlock(Blocks.obsidian))
+        {
+            if(Keyboard.isKeyDown(Keyboard.KEY_LSHIFT))
+            {
+                event.toolTip.add("Bloc très résistant aux exposions");
+                event.toolTip.add("Résistance : 2000");
+            }
+            else
+            {
+                event.toolTip.add("Maintenir shift gauche pour plus d'information");
+            }
+        }
+    }
 }
