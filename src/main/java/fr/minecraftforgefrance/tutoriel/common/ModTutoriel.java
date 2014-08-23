@@ -82,6 +82,7 @@ public class ModTutoriel
         EntityRegistry.registerModEntity(EntityMobTutoriel.class, "mobTutoriel", 420, this.instance, 40, 2, true);
 
         GameRegistry.registerTileEntity(TileEntityTutoriel.class, "modtutoriel:tutoriel");
+        GameRegistry.registerTileEntity(TileEntityDirectional.class, "modtutoriel:directional");
 
         MinecraftForge.EVENT_BUS.register(new LivingEventHandler());
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
