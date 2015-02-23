@@ -18,6 +18,7 @@ import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import fr.minecraftforgefrance.tutoriel.proxy.CommonProxy;
@@ -89,6 +90,8 @@ public class ModTutoriel
         FMLCommonHandler.instance().bus().register(new PlayerEventHandler());
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
         proxy.registerRender();
+        
+        NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandlerTuto());
     }
 
     @EventHandler
