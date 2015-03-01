@@ -16,12 +16,14 @@ public class TileEntityTutoriel extends TileEntity implements IInventory
     private byte direction;
     private ItemStack[] contents = new ItemStack[27];
     private String customName;
+    private boolean cobbleOnly;
 
     @Override
     public void readFromNBT(NBTTagCompound compound)
     {
         super.readFromNBT(compound);
         this.direction = compound.getByte("Direction");
+        this.cobbleOnly = compound.getBoolean("Cobble");
 
         if(compound.hasKey("CustomName", Constants.NBT.TAG_STRING))
         {
@@ -47,6 +49,7 @@ public class TileEntityTutoriel extends TileEntity implements IInventory
     {
         super.writeToNBT(compound);
         compound.setByte("Direction", this.direction);
+        compound.setBoolean("Cobble", this.cobbleOnly);
         if(this.hasCustomInventoryName())
         {
             compound.setString("CustomName", this.customName);
@@ -207,5 +210,15 @@ public class TileEntityTutoriel extends TileEntity implements IInventory
     public boolean isItemValidForSlot(int slotIndex, ItemStack stack)
     {
         return true;
+    }
+    
+    public boolean isCobbleOnly()
+    {
+        return cobbleOnly;
+    }
+
+    public void setCobbleOnly(boolean cobbleOnly)
+    {
+        this.cobbleOnly = cobbleOnly;
     }
 }

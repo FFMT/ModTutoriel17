@@ -20,7 +20,13 @@ public class ContainerCupboard extends Container
         {
             for(int j = 0; j < 9; ++j)
             {
-                this.addSlotToContainer(new Slot(tile, j + i * 9, 8 + j * 18, 18 + i * 18));
+                this.addSlotToContainer(new Slot(tile, j + i * 9, 8 + j * 18, 18 + i * 18)
+                {
+                    public boolean isItemValid(ItemStack stack)
+                    {
+                        return tileTuto.isCobbleOnly() ? stack.getItem() == Item.getItemFromBlock(Blocks.cobblestone) : true;
+                    }
+                });
             }
         }
         this.bindPlayerInventory(inventory);
@@ -52,6 +58,11 @@ public class ContainerCupboard extends Container
         {
             ItemStack itemstack1 = slot.getStack();
             itemstack = itemstack1.copy();
+
+            if(this.tileTuto.isCobbleOnly() && itemstack.getItem() != Item.getItemFromBlock(Blocks.cobblestone))
+            {
+                return null;
+            }
 
             if(slotIndex < this.tileTuto.getSizeInventory())
             {
@@ -87,5 +98,10 @@ public class ContainerCupboard extends Container
     {
         super.onContainerClosed(player);
         this.tileTuto.closeInventory();
+    }
+
+    public TileEntityTutoriel getTileTuto()
+    {
+        return tileTuto;
     }
 }

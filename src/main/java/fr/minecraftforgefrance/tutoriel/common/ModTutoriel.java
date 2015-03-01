@@ -19,8 +19,10 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
+import cpw.mods.fml.relauncher.Side;
 import fr.minecraftforgefrance.tutoriel.proxy.CommonProxy;
 
 @Mod(modid = ModTutoriel.MODID, name = "Mod Tutoriel", version = "1.0.0")
@@ -39,6 +41,8 @@ public class ModTutoriel
 
     public static ArmorMaterial armorTuto = EnumHelper.addArmorMaterial("armorTuto", 25, new int[] {4, 6, 5, 4}, 20);
     public static ToolMaterial toolTuto = EnumHelper.addToolMaterial("toolTuto", 2, 854, 12.0F, 4.0F, 18);
+    
+    public static SimpleNetworkWrapper network;
 
     @EventHandler
     public void preInit(FMLPreInitializationEvent event)
@@ -74,6 +78,9 @@ public class ModTutoriel
         GameRegistry.registerBlock(blockTutoriel, "block_tutoriel");
         GameRegistry.registerBlock(blockTutoriel2, "block_tutoriel2");
         GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", new Object[] {BlockTutorielMetadata.subBlock});
+        
+        network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
+        network.registerMessage(PacketCobbleOnly.Handler.class, PacketCobbleOnly.class, 0, Side.SERVER);
     }
 
     @EventHandler
