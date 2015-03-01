@@ -81,6 +81,8 @@ public class ModTutoriel
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(PacketCobbleOnly.Handler.class, PacketCobbleOnly.class, 0, Side.SERVER);
+        network.registerMessage(PacketRequestPlayerList.Handler.class, PacketRequestPlayerList.class, 1, Side.SERVER);
+        network.registerMessage(PacketPlayerList.Handler.class, PacketPlayerList.class, 2, Side.CLIENT);
     }
 
     @EventHandler
@@ -97,6 +99,7 @@ public class ModTutoriel
         FMLCommonHandler.instance().bus().register(new PlayerEventHandler());
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
         proxy.registerRender();
+        proxy.registerKeyBinding();
         
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandlerTuto());
     }

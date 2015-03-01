@@ -9,8 +9,10 @@ import net.minecraftforge.event.entity.player.PlayerEvent;
 import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
+import cpw.mods.fml.common.gameevent.InputEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.minecraftforgefrance.tutoriel.proxy.ClientProxy;
 
 public class PlayerEventHandler
 {
@@ -42,6 +44,16 @@ public class PlayerEventHandler
             {
                 event.toolTip.add("Maintenir shift gauche pour plus d'information");
             }
+        }
+    }
+    
+    @SubscribeEvent
+    @SideOnly(Side.CLIENT)
+    public void onKeyInput(InputEvent.KeyInputEvent event)
+    {
+        if(ClientProxy.playerListKey.isPressed())
+        {
+            ModTutoriel.network.sendToServer(new PacketRequestPlayerList());
         }
     }
 }
