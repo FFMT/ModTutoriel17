@@ -5,6 +5,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import fr.minecraftforgefrance.tutoriel.client.GuiCupboard;
+import fr.minecraftforgefrance.tutoriel.client.GuiMachineTuto;
 
 public class GuiHandlerTuto implements IGuiHandler
 {
@@ -16,6 +17,10 @@ public class GuiHandlerTuto implements IGuiHandler
         {
             return new ContainerCupboard((TileEntityTutoriel)tile, player.inventory);
         }
+        if(tile instanceof TileEntityMachineTuto)
+        {
+        	return new ContainerMachineTuto((TileEntityMachineTuto)tile, player.inventory);
+        }
         return null;
     }
 
@@ -26,6 +31,10 @@ public class GuiHandlerTuto implements IGuiHandler
         if(tile instanceof TileEntityTutoriel)
         {
             return new GuiCupboard((TileEntityTutoriel)tile, player.inventory);
+        }
+        if(tile instanceof TileEntityMachineTuto)
+        {
+        	return new GuiMachineTuto((TileEntityMachineTuto)tile, player.inventory);
         }
         return null;
     }
