@@ -1,0 +1,30 @@
+item.tutoriel.name=Item Tutorial
+item.tutoriel2.name=Item Tutorial 2
+item.helmetTuto.name=Tutorial Helmet
+item.chestPlateTuto.name=Tutorial ChestPlate
+item.leggingsTuto.name=Tutorial Leggings
+item.bootsTuto.name=Tutorial Boots
+item.swordTuto.name=Tutorial Sword
+item.pickaxeTuto.name=Tutorial Pickaxe
+item.axeTuto.name=Tutorial Axe
+item.shovelTuto.name=Tutorial Shovel
+item.hoeTuto.name=Tutorial Hoe
+
+tile.tutoriel.name=Block Tutorial
+tile.tutoriel2.name=Block Tutorial 2
+tile.metadataTuto.block1.name=Metadata Block 1
+tile.metadataTuto.block2.name=Metadata Block 2
+tile.metadataTuto.block3.name=Metadata Block 3
+tile.metadataTuto.block4.name=Metadata Block 4
+
+entity.mobTutoriel.name=Tutorial Mob
+
+sword.mode.message.0=Burn player
+sword.mode.message.1=Burn mob
+sword.mode.message.2=Burn animals
+
+tile.tutoriel2.number=Value : %d
+
+tile.cupboard=Cupboard
+
+modtutoriel.playerList=Player list

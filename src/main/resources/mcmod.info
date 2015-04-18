@@ -1,0 +1,16 @@
+[
+{
+  "modid": "modtutoriel",
+  "name": "Mod Tutoriel",
+  "description": "Mod créé lors du tutoriel de minecraft forge france",
+  "version": "${version}",
+  "mcversion": "${mcversion}",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["robin4002", "kevin_68", "elias54", "gugu42", "jglrxavpok"],
+  "credits": "Tutoriel par Minecraft Forge France",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
