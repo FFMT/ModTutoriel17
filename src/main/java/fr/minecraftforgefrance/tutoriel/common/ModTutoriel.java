@@ -37,7 +37,7 @@ public class ModTutoriel
     public static CommonProxy proxy;
 
     public static Item itemTutoriel, itemTutoriel2, helmetTuto, chestPlateTuto, leggingsTuto, bootsTuto, swordTuto, pickaxeTuto, axeTuto, shovelTuto, hoeTuto;
-    public static Block blockTutoriel, blockTutoriel2, blockMetadataTuto;
+    public static Block blockTutoriel, blockTutoriel2, blockMetadataTuto, machineTuto;
 
     public static ArmorMaterial armorTuto = EnumHelper.addArmorMaterial("armorTuto", 25, new int[] {4, 6, 5, 4}, 20);
     public static ToolMaterial toolTuto = EnumHelper.addToolMaterial("toolTuto", 2, 854, 12.0F, 4.0F, 18);
@@ -74,10 +74,12 @@ public class ModTutoriel
         blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setCreativeTab(CreativeTabs.tabBlock);
         blockTutoriel2 = new BlockTutoriel2(Material.wood).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
         blockMetadataTuto = new BlockTutorielMetadata().setBlockName("metadataTuto").setHardness(1.5F).setResistance(10.0F).setCreativeTab(CreativeTabs.tabBlock);
+        machineTuto = new MachineTuto().setBlockName("machineTuto");
 
         GameRegistry.registerBlock(blockTutoriel, "block_tutoriel");
         GameRegistry.registerBlock(blockTutoriel2, "block_tutoriel2");
         GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", new Object[] {BlockTutorielMetadata.subBlock});
+        GameRegistry.registerBlock(machineTuto, "machineTuto");
         
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(PacketCobbleOnly.Handler.class, PacketCobbleOnly.class, 0, Side.SERVER);
@@ -93,6 +95,7 @@ public class ModTutoriel
 
         GameRegistry.registerTileEntity(TileEntityTutoriel.class, "modtutoriel:tutoriel");
         GameRegistry.registerTileEntity(TileEntityDirectional.class, "modtutoriel:directional");
+        GameRegistry.registerTileEntity(TileEntityMachineTuto.class, "modTutoriel:MachineTutoTileEntity");
 
         MinecraftForge.EVENT_BUS.register(new LivingEventHandler());
         MinecraftForge.EVENT_BUS.register(new EntityEventHandler());
