@@ -2,14 +2,6 @@ package fr.minecraftforgefrance.tutoriel.common;
 
 import java.awt.Color;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.Item;
-import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemArmor.ArmorMaterial;
-import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.common.util.EnumHelper;
 import cpw.mods.fml.common.FMLCommonHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
@@ -24,6 +16,14 @@ import cpw.mods.fml.common.registry.EntityRegistry;
 import cpw.mods.fml.common.registry.GameRegistry;
 import cpw.mods.fml.relauncher.Side;
 import fr.minecraftforgefrance.tutoriel.proxy.CommonProxy;
+import net.minecraft.block.Block;
+import net.minecraft.block.material.Material;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.Item;
+import net.minecraft.item.Item.ToolMaterial;
+import net.minecraft.item.ItemArmor.ArmorMaterial;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.util.EnumHelper;
 
 @Mod(modid = ModTutoriel.MODID, name = "Mod Tutoriel", version = "1.0.0")
 public class ModTutoriel
@@ -41,7 +41,7 @@ public class ModTutoriel
 
     public static ArmorMaterial armorTuto = EnumHelper.addArmorMaterial("armorTuto", 25, new int[] {4, 6, 5, 4}, 20);
     public static ToolMaterial toolTuto = EnumHelper.addToolMaterial("toolTuto", 2, 854, 12.0F, 4.0F, 18);
-    
+
     public static SimpleNetworkWrapper network;
 
     @EventHandler
@@ -80,7 +80,7 @@ public class ModTutoriel
         GameRegistry.registerBlock(blockTutoriel2, "block_tutoriel2");
         GameRegistry.registerBlock(blockMetadataTuto, ItemBlockMetadataTutoriel.class, "block_tuto_metadata", new Object[] {BlockTutorielMetadata.subBlock});
         GameRegistry.registerBlock(machineTuto, "machineTuto");
-        
+
         network = NetworkRegistry.INSTANCE.newSimpleChannel(MODID);
         network.registerMessage(PacketCobbleOnly.Handler.class, PacketCobbleOnly.class, 0, Side.SERVER);
         network.registerMessage(PacketRequestPlayerList.Handler.class, PacketRequestPlayerList.class, 1, Side.SERVER);
@@ -103,7 +103,7 @@ public class ModTutoriel
         MinecraftForge.EVENT_BUS.register(new PlayerEventHandler());
         proxy.registerRender();
         proxy.registerKeyBinding();
-        
+
         NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandlerTuto());
     }
 

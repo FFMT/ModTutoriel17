@@ -15,7 +15,7 @@ public class GuiPlayerList extends GuiScreen
     {
         super.drawScreen(x, y, tick);
 
-        for(int i = 0; i < playerList.length;i++)
+        for(int i = 0; i < playerList.length; i++)
         {
             System.out.println(playerList[i]);
             this.fontRendererObj.drawString(playerList[i], 0, 20 + i * 10, 0xFFFFFF);

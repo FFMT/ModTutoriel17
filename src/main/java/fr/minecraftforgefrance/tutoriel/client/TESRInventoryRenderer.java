@@ -1,15 +1,14 @@
 package fr.minecraftforgefrance.tutoriel.client;
 
-import net.minecraft.block.Block;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.renderer.RenderBlocks;
-import net.minecraft.world.IBlockAccess;
-
 import org.lwjgl.opengl.GL11;
 
 import cpw.mods.fml.client.registry.ISimpleBlockRenderingHandler;
 import fr.minecraftforgefrance.tutoriel.common.ModTutoriel;
 import fr.minecraftforgefrance.tutoriel.proxy.ClientProxy;
+import net.minecraft.block.Block;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.RenderBlocks;
+import net.minecraft.world.IBlockAccess;
 
 public class TESRInventoryRenderer implements ISimpleBlockRenderingHandler
 {

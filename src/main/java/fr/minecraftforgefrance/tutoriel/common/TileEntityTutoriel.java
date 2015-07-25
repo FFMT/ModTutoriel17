@@ -211,7 +211,7 @@ public class TileEntityTutoriel extends TileEntity implements IInventory
     {
         return true;
     }
-    
+
     public boolean isCobbleOnly()
     {
         return cobbleOnly;

@@ -1,11 +1,11 @@
 package fr.minecraftforgefrance.tutoriel.client;
 
+import fr.minecraftforgefrance.tutoriel.common.EntityMobTutoriel;
+import fr.minecraftforgefrance.tutoriel.common.ModTutoriel;
 import net.minecraft.client.model.ModelBiped;
 import net.minecraft.client.renderer.entity.RenderBiped;
 import net.minecraft.entity.EntityLiving;
 import net.minecraft.util.ResourceLocation;
-import fr.minecraftforgefrance.tutoriel.common.EntityMobTutoriel;
-import fr.minecraftforgefrance.tutoriel.common.ModTutoriel;
 
 public class RenderMobTutoriel extends RenderBiped
 {

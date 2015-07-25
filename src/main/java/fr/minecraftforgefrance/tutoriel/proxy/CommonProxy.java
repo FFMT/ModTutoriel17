@@ -6,9 +6,9 @@ public class CommonProxy
     {
 
     }
-    
+
     public void registerKeyBinding()
     {
-        
+
     }
 }

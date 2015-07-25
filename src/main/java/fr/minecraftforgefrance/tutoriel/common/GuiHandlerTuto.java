@@ -1,11 +1,11 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraft.world.World;
 import cpw.mods.fml.common.network.IGuiHandler;
 import fr.minecraftforgefrance.tutoriel.client.GuiCupboard;
 import fr.minecraftforgefrance.tutoriel.client.GuiMachineTuto;
+import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.tileentity.TileEntity;
+import net.minecraft.world.World;
 
 public class GuiHandlerTuto implements IGuiHandler
 {
@@ -19,7 +19,7 @@ public class GuiHandlerTuto implements IGuiHandler
         }
         if(tile instanceof TileEntityMachineTuto)
         {
-        	return new ContainerMachineTuto((TileEntityMachineTuto)tile, player.inventory);
+            return new ContainerMachineTuto((TileEntityMachineTuto)tile, player.inventory);
         }
         return null;
     }
@@ -34,7 +34,7 @@ public class GuiHandlerTuto implements IGuiHandler
         }
         if(tile instanceof TileEntityMachineTuto)
         {
-        	return new GuiMachineTuto((TileEntityMachineTuto)tile, player.inventory);
+            return new GuiMachineTuto((TileEntityMachineTuto)tile, player.inventory);
         }
         return null;
     }

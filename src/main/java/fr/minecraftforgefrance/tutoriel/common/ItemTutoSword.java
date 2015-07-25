@@ -59,20 +59,20 @@ public class ItemTutoSword extends ItemSword
 
     public boolean hitEntity(ItemStack stack, EntityLivingBase attackedLiving, EntityLivingBase attackerLiving)
     {
-        if(!stack.hasTagCompound()) // Si le stack n'a pas de tag NBT
+        if(!stack.hasTagCompound())  // Si le stack n'a pas de tag NBT
         {
             stack.setTagCompound(new NBTTagCompound()); // je lui en ajoute un, sinon il y a un risque de NullPointerException
         }
 
         IEntitySelector filter; // Je déclare un filter, il est null pour l'instant
-        if(stack.getTagCompound().getByte("mode") == 0) // si le mode est 0
+        if(stack.getTagCompound().getByte("mode") == 0)  // si le mode est 0
         {
             filter = new IEntitySelector()
             {
                 @Override
                 public boolean isEntityApplicable(Entity entity)
                 {
-                    if(entity instanceof EntityPlayer) // mon sélecteur prend tout les joueurs
+                    if(entity instanceof EntityPlayer)  // mon sélecteur prend tout les joueurs
                     {
                         return true;
                     }
@@ -80,14 +80,14 @@ public class ItemTutoSword extends ItemSword
                 }
             };
         }
-        else if(stack.getTagCompound().getByte("mode") == 1) // si le mode est 1
+        else if(stack.getTagCompound().getByte("mode") == 1)  // si le mode est 1
         {
             filter = new IEntitySelector()
             {
                 @Override
                 public boolean isEntityApplicable(Entity entity)
                 {
-                    if(entity instanceof EntityMob)// mon sélecteur prend tout les monstres
+                    if(entity instanceof EntityMob) // mon sélecteur prend tout les monstres
                     {
                         return true;
                     }
@@ -103,7 +103,7 @@ public class ItemTutoSword extends ItemSword
                 @Override
                 public boolean isEntityApplicable(Entity entity)
                 {
-                    if(entity instanceof EntityAnimal) // mon sélecteur prend tout les animaux
+                    if(entity instanceof EntityAnimal)  // mon sélecteur prend tout les animaux
                     {
                         return true;
                     }
@@ -112,13 +112,13 @@ public class ItemTutoSword extends ItemSword
             };
         }
         List entityTargetList = attackedLiving.worldObj.selectEntitiesWithinAABB(EntityLivingBase.class, attackedLiving.boundingBox.expand(8.0D, 2.0D, 8.0D), filter); // j'obtiens la liste de toute
-                                                                                                                                                                       // les entités vivantes sur un
-                                                                                                                                                                       // rayon de 8 en fonction du
-                                                                                                                                                                       // filtre
+ // les entités vivantes sur un
+ // rayon de 8 en fonction du
+ // filtre
         for(Object entity : entityTargetList)
         {
             EntityLivingBase living = (EntityLivingBase)entity; // Il faut donc cast EntityLivingBase à l'objet pour utiliser les méthodes qui sont dans EntityLivingBase
-            if(!living.equals(attackerLiving)) // Vérifie que l'entité n'est pas celui qui a donné le coup
+            if(!living.equals(attackerLiving))  // Vérifie que l'entité n'est pas celui qui a donné le coup
             {
                 living.setFire(4); // Mets feu à l'entité pendant 4 secondes
             }

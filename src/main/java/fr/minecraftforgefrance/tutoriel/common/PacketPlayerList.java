@@ -1,28 +1,29 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
-import fr.minecraftforgefrance.tutoriel.client.GuiPlayerList;
-import io.netty.buffer.ByteBuf;
-import net.minecraft.client.Minecraft;
 import cpw.mods.fml.common.network.ByteBufUtils;
 import cpw.mods.fml.common.network.simpleimpl.IMessage;
 import cpw.mods.fml.common.network.simpleimpl.IMessageHandler;
 import cpw.mods.fml.common.network.simpleimpl.MessageContext;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import fr.minecraftforgefrance.tutoriel.client.GuiPlayerList;
+import io.netty.buffer.ByteBuf;
+import net.minecraft.client.Minecraft;
 
 public class PacketPlayerList implements IMessage
 {
     String[] playerList;
+
     public PacketPlayerList()
     {
-        
+
     }
-    
+
     public PacketPlayerList(String[] playerList)
     {
         this.playerList = playerList;
     }
-    
+
     @Override
     public void fromBytes(ByteBuf buf)
     {
@@ -42,7 +43,7 @@ public class PacketPlayerList implements IMessage
             ByteBufUtils.writeUTF8String(buf, name);
         }
     }
-    
+
     public static class Handler implements IMessageHandler<PacketPlayerList, IMessage>
     {
         @Override

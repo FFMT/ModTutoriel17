@@ -1,11 +1,5 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.item.Item;
-import net.minecraftforge.event.entity.player.ItemTooltipEvent;
-import net.minecraftforge.event.entity.player.PlayerEvent;
-
 import org.lwjgl.input.Keyboard;
 
 import cpw.mods.fml.common.eventhandler.SubscribeEvent;
@@ -13,6 +7,11 @@ import cpw.mods.fml.common.gameevent.InputEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import fr.minecraftforgefrance.tutoriel.proxy.ClientProxy;
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.Item;
+import net.minecraftforge.event.entity.player.ItemTooltipEvent;
+import net.minecraftforge.event.entity.player.PlayerEvent;
 
 public class PlayerEventHandler
 {
@@ -46,7 +45,7 @@ public class PlayerEventHandler
             }
         }
     }
-    
+
     @SubscribeEvent
     @SideOnly(Side.CLIENT)
     public void onKeyInput(InputEvent.KeyInputEvent event)

@@ -1,11 +1,11 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.EntityCreeper;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.MathHelper;
 import net.minecraftforge.event.entity.living.LivingFallEvent;
 import net.minecraftforge.event.entity.living.LivingHurtEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class LivingEventHandler
 {
@@ -38,11 +38,11 @@ public class LivingEventHandler
     public void onLivingFall(LivingFallEvent event)
     {
         ItemStack boots = event.entityLiving.getEquipmentInSlot(1); // récupère les bottes
-        if(boots != null && boots.getItem() == ModTutoriel.bootsTuto) // on vérifie que l'entité à des bottes avec le null check puis si elle a des bottes, on vérifie si c'est les bottes tuto
+        if(boots != null && boots.getItem() == ModTutoriel.bootsTuto)  // on vérifie que l'entité à des bottes avec le null check puis si elle a des bottes, on vérifie si c'est les bottes tuto
         {
             boots.damageItem(MathHelper.floor_float(event.distance), event.entityLiving); // on endommage les bottes en fonction de la puissance de la chute
             event.distance = 0F; // on défini la distance à 0 pour pas que l'entité prenne de dégât
-            if(boots.stackSize == 0) // si le stack size est de 0 (donc que les bottes ont cassées)
+            if(boots.stackSize == 0)  // si le stack size est de 0 (donc que les bottes ont cassées)
             {
                 event.entityLiving.setCurrentItemOrArmor(1, null); // on met un item null au niveau des bottes, c'est pour évite un bug d'affichage
             }

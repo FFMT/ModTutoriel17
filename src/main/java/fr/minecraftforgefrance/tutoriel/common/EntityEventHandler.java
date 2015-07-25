@@ -1,8 +1,8 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
+import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 import net.minecraft.entity.monster.EntityZombie;
 import net.minecraftforge.event.entity.EntityJoinWorldEvent;
-import cpw.mods.fml.common.eventhandler.SubscribeEvent;
 
 public class EntityEventHandler
 {
