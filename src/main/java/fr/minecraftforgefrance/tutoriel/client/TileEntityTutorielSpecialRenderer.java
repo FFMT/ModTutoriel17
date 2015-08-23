@@ -11,7 +11,7 @@ import net.minecraft.util.ResourceLocation;
 
 public class TileEntityTutorielSpecialRenderer extends TileEntitySpecialRenderer
 {
-    public static ModelBlockTutoriel model = new ModelBlockTutoriel();
+    public ModelBlockTutoriel model = new ModelBlockTutoriel();
     public static ResourceLocation texture = new ResourceLocation(ModTutoriel.MODID, "textures/models/blocks/model_block_tutoriel.png");
 
     public TileEntityTutorielSpecialRenderer()
@@ -32,6 +32,13 @@ public class TileEntityTutorielSpecialRenderer extends TileEntitySpecialRenderer
         GL11.glRotatef(180F, 0.0F, 0.0F, 1.0F);
         GL11.glRotatef((90F * tile.getDirection()) + 180F, 0.0F, 1.0F, 0.0F);
         this.bindTexture(texture);
+        float f1 = tile.prevLidAngle + (tile.lidAngle - tile.prevLidAngle) * partialRenderTick;
+        f1 = 1.0F - f1;
+        f1 = 1.0F - f1 * f1 * f1;
+        model.doorLeft.rotateAngleY = -(f1 * (float)Math.PI / 2.0F);
+        model.leftHandle.rotateAngleY = -(f1 * (float)Math.PI / 2.0F);
+        model.doorRight.rotateAngleY = (f1 * (float)Math.PI / 2.0F);
+        model.rightHandle.rotateAngleY = (f1 * (float)Math.PI / 2.0F);
         model.renderAll();
         GL11.glPopMatrix();
     }

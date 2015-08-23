@@ -12,6 +12,7 @@ import net.minecraft.world.IBlockAccess;
 
 public class TESRInventoryRenderer implements ISimpleBlockRenderingHandler
 {
+    private ModelBlockTutoriel model = new ModelBlockTutoriel();
     @Override
     public void renderInventoryBlock(Block block, int metadata, int modelId, RenderBlocks renderer)
     {
@@ -22,7 +23,7 @@ public class TESRInventoryRenderer implements ISimpleBlockRenderingHandler
             GL11.glTranslatef(0.0F, -1.0F, 0.0F);
             GL11.glRotatef(180F, 0.0F, 1.0F, 0.0F);
             Minecraft.getMinecraft().getTextureManager().bindTexture(TileEntityTutorielSpecialRenderer.texture);
-            TileEntityTutorielSpecialRenderer.model.renderAll();
+            this.model.renderAll();
             GL11.glPopMatrix();
         }
     }

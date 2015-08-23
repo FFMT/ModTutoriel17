@@ -156,4 +156,11 @@ public class BlockTutoriel2 extends Block
     {
         return ClientProxy.tesrRenderId;
     }
+    
+    public boolean onBlockEventReceived(World world, int x, int y, int z, int id, int value)
+    {
+        super.onBlockEventReceived(world, x, y, z, id, value);
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        return tileentity != null ? tileentity.receiveClientEvent(id, value) : false;
+    }
 }

@@ -1,7 +1,13 @@
 package fr.minecraftforgefrance.tutoriel.common;
 
+import java.util.Iterator;
+import java.util.List;
+
+import net.minecraft.block.BlockChest;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.inventory.ContainerChest;
 import net.minecraft.inventory.IInventory;
+import net.minecraft.inventory.InventoryLargeChest;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
@@ -9,6 +15,7 @@ import net.minecraft.network.NetworkManager;
 import net.minecraft.network.Packet;
 import net.minecraft.network.play.server.S35PacketUpdateTileEntity;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraftforge.common.util.Constants;
 
 public class TileEntityTutoriel extends TileEntity implements IInventory
@@ -17,6 +24,10 @@ public class TileEntityTutoriel extends TileEntity implements IInventory
     private ItemStack[] contents = new ItemStack[27];
     private String customName;
     private boolean cobbleOnly;
+    public float lidAngle;
+    public float prevLidAngle;
+    public int numPlayersUsing;
+    private int ticksSinceSync;
 
     @Override
     public void readFromNBT(NBTTagCompound compound)
@@ -197,19 +208,110 @@ public class TileEntityTutoriel extends TileEntity implements IInventory
     @Override
     public void openInventory()
     {
+        if(this.numPlayersUsing < 0)
+        {
+            this.numPlayersUsing = 0;
+        }
 
+        ++this.numPlayersUsing;
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 1, this.numPlayersUsing);
+        this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord, this.zCoord, this.getBlockType());
+        this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord - 1, this.zCoord, this.getBlockType());
     }
 
     @Override
     public void closeInventory()
     {
-
+        --this.numPlayersUsing;
+        this.worldObj.addBlockEvent(this.xCoord, this.yCoord, this.zCoord, this.getBlockType(), 1, this.numPlayersUsing);
+        this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord, this.zCoord, this.getBlockType());
+        this.worldObj.notifyBlocksOfNeighborChange(this.xCoord, this.yCoord - 1, this.zCoord, this.getBlockType());
     }
 
     @Override
     public boolean isItemValidForSlot(int slotIndex, ItemStack stack)
     {
         return true;
+    }
+
+    @Override
+    public void updateEntity()
+    {
+        ++this.ticksSinceSync;
+        float f;
+
+        if(!this.worldObj.isRemote && this.numPlayersUsing != 0 && (this.ticksSinceSync + this.xCoord + this.yCoord + this.zCoord) % 200 == 0)
+        {
+            this.numPlayersUsing = 0;
+            f = 5.0F;
+            List list = this.worldObj.getEntitiesWithinAABB(EntityPlayer.class, AxisAlignedBB.getBoundingBox((double)((float)this.xCoord - f), (double)((float)this.yCoord - f), (double)((float)this.zCoord - f), (double)((float)(this.xCoord + 1) + f), (double)((float)(this.yCoord + 1) + f), (double)((float)(this.zCoord + 1) + f)));
+            Iterator iterator = list.iterator();
+
+            while(iterator.hasNext())
+            {
+                EntityPlayer entityplayer = (EntityPlayer)iterator.next();
+
+                if(entityplayer.openContainer instanceof ContainerCupboard)
+                {
+                    IInventory iinventory = ((ContainerCupboard)entityplayer.openContainer).getTileTuto();
+
+                    if(iinventory == this)
+                    {
+                        ++this.numPlayersUsing;
+                    }
+                }
+            }
+        }
+
+        this.prevLidAngle = this.lidAngle;
+        f = 0.1F;
+
+        if(this.numPlayersUsing > 0 && this.lidAngle == 0.0F)
+        {
+            this.worldObj.playSoundEffect(this.xCoord + 0.5D, this.yCoord + 0.5D, this.zCoord + 0.5D, "random.chestopen", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+        }
+
+        if(this.numPlayersUsing == 0 && this.lidAngle > 0.0F || this.numPlayersUsing > 0 && this.lidAngle < 1.0F)
+        {
+            float f1 = this.lidAngle;
+
+            if(this.numPlayersUsing > 0)
+            {
+                this.lidAngle += f;
+            }
+            else
+            {
+                this.lidAngle -= f;
+            }
+
+            if(this.lidAngle > 1.0F)
+            {
+                this.lidAngle = 1.0F;
+            }
+
+            float f2 = 0.5F;
+
+            if(this.lidAngle < f2 && f1 >= f2)
+            {
+                this.worldObj.playSoundEffect(this.xCoord + 0.5D, this.yCoord + 0.5D, this.zCoord + 0.5D, "random.chestclosed", 0.5F, this.worldObj.rand.nextFloat() * 0.1F + 0.9F);
+            }
+
+            if(this.lidAngle < 0.0F)
+            {
+                this.lidAngle = 0.0F;
+            }
+        }
+    }
+
+    @Override
+    public boolean receiveClientEvent(int id, int value)
+    {
+        if(id == 1)
+        {
+            this.numPlayersUsing = value;
+            return true;
+        }
+        return super.receiveClientEvent(id, value);
     }
 
     public boolean isCobbleOnly()
