@@ -58,6 +58,7 @@ public class ModTutoriel
         axeTuto = new ItemTutoAxe(toolTuto).setUnlocalizedName("axeTuto").setTextureName(MODID + ":axe_tutoriel");
         shovelTuto = new ItemTutoShovel(toolTuto).setUnlocalizedName("shovelTuto").setTextureName(MODID + ":shovel_tutoriel");
         hoeTuto = new ItemTutoHoe(toolTuto).setUnlocalizedName("hoeTuto").setTextureName(MODID + ":hoe_tutoriel");
+        obsidianBow= new obsidianBow().setUnlocalizedName("obsidianBow").setTextureName(MODID+ ":obsidian_bow").setCreativeTab(CreativeTabs.tabCombat);
 
         GameRegistry.registerItem(itemTutoriel, "item_tutoriel");
         GameRegistry.registerItem(itemTutoriel2, "item_tutoriel2");
@@ -70,7 +71,8 @@ public class ModTutoriel
         GameRegistry.registerItem(axeTuto, "item_tuto_axe");
         GameRegistry.registerItem(shovelTuto, "item_tuto_shovel");
         GameRegistry.registerItem(hoeTuto, "item_tuto_hoe");
-
+        GameRegistry.registerItem(obsidianBow, "obsidianBow");
+      
         blockTutoriel = new BlockTutoriel(Material.rock).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel").setCreativeTab(CreativeTabs.tabBlock);
         blockTutoriel2 = new BlockTutoriel2(Material.wood).setHardness(1.5F).setResistance(10.0F).setBlockName("tutoriel2").setBlockTextureName(MODID + ":block_tutoriel2").setCreativeTab(CreativeTabs.tabBlock);
         blockMetadataTuto = new BlockTutorielMetadata().setBlockName("metadataTuto").setHardness(1.5F).setResistance(10.0F).setCreativeTab(CreativeTabs.tabBlock);
