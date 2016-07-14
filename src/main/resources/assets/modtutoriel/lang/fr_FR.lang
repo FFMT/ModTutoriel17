@@ -9,6 +9,7 @@ item.pickaxeTuto.name=Pioche Tutoriel
 item.axeTuto.name=Hache Tutoriel
 item.shovelTuto.name=Pelle Tutoriel
 item.hoeTuto.name=Houe Tutoriel
+item.obsidianBow.name=Arc Tutoriel
 
 tile.tutoriel.name=Bloc Tutoriel
 tile.tutoriel2.name=Bloc Tutoriel 2

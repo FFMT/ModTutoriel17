@@ -9,6 +9,7 @@ item.pickaxeTuto.name=Tutorial Pickaxe
 item.axeTuto.name=Tutorial Axe
 item.shovelTuto.name=Tutorial Shovel
 item.hoeTuto.name=Tutorial Hoe
+item.obsidianBow.name=Tutorial bow
 
 tile.tutoriel.name=Block Tutorial
 tile.tutoriel2.name=Block Tutorial 2
