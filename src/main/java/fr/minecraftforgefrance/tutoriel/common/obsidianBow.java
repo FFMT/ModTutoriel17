@@ -19,7 +19,7 @@ import net.minecraftforge.event.entity.player.ArrowNockEvent;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class obsidianBow extends Item
+public class obsidianBow extends ItemBow
 {
 	public static final String[] bowPullIconNameArray = new String[] {"1", "2", "3"};
     @SideOnly(Side.CLIENT)
